@@ -1,30 +1,30 @@
 CREATE TABLE IF NOT EXISTS empresa (
-                                       id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                       nombre TEXT NOT NULL UNIQUE,
-                                       sector TEXT NOT NULL,
-                                       web TEXT,
-                                       fechaRegistro TEXT NOT NULL
+                                       id INT PRIMARY KEY AUTO_INCREMENT,
+                                       nombre VARCHAR(255) NOT NULL UNIQUE,
+                                       sector VARCHAR(255) NOT NULL,
+                                       web VARCHAR(255),
+                                       fechaRegistro DATE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS oferta (
-                                      id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                      id_empresa INTEGER NOT NULL,
-                                      titulo TEXT NOT NULL,
+                                      id INT PRIMARY KEY AUTO_INCREMENT,
+                                      id_empresa INT NOT NULL,
+                                      titulo VARCHAR(255) NOT NULL,
                                       descripcion TEXT,
-                                      estado TEXT NOT NULL CHECK (estado IN ('pendiente', 'entrevista', 'rechazado', 'aceptado')),
-    fechaPostulacion TEXT NOT NULL,
-    enlace TEXT,
-    salario REAL NOT NULL DEFAULT 0,
-    notas TEXT,
-    FOREIGN KEY (id_empresa) REFERENCES empresa (id) ON DELETE CASCADE
-    );
+                                      estado VARCHAR(50) NOT NULL CHECK (estado IN ('pendiente', 'entrevista', 'rechazada', 'aceptada')),
+                                      fechaPostulacion DATE NOT NULL,
+                                      enlace TEXT,
+                                      salario DECIMAL(10,2) NOT NULL DEFAULT 0,
+                                      notas TEXT,
+                                      FOREIGN KEY (id_empresa) REFERENCES empresa(id) ON DELETE CASCADE
+);
 
 CREATE TABLE IF NOT EXISTS entrevista (
-                                          id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                          id_oferta INTEGER NOT NULL,
-                                          fecha TEXT NOT NULL,
-                                          tipo TEXT NOT NULL CHECK (tipo IN ('telefonica', 'tecnica', 'presencial', 'online')),
-    notas TEXT,
-    resultado TEXT NOT NULL CHECK (resultado IN ('pendiente', 'positivo', 'negativo')),
-    FOREIGN KEY (id_oferta) REFERENCES oferta (id) ON DELETE CASCADE
-    );
+                                          id INT PRIMARY KEY AUTO_INCREMENT,
+                                          id_oferta INT NOT NULL,
+                                          fecha DATE NOT NULL,
+                                          tipo VARCHAR(50) NOT NULL CHECK (tipo IN ('telefonica', 'tecnica', 'rrhh', 'final')),
+                                          notas TEXT,
+                                          resultado VARCHAR(50) NOT NULL CHECK (resultado IN ('pendiente', 'positivo', 'negativo')),
+                                          FOREIGN KEY (id_oferta) REFERENCES oferta(id) ON DELETE CASCADE
+);
