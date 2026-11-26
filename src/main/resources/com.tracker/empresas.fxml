@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.tracker.controller.EmpresasController"
+            prefWidth="900"
+            prefHeight="550">
+
+    <top>
+
+        <HBox spacing="10">
+
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <children>
+
+                <Button text="← Volver"
+                        onAction="#volver"/>
+
+                <Label text="Empresas"/>
+
+            </children>
+
+        </HBox>
+
+    </top>
+
+    <center>
+
+        <TableView fx:id="tablaEmpresas">
+
+            <columns>
+
+                <TableColumn fx:id="colNombre"
+                             text="Nombre"/>
+
+                <TableColumn fx:id="colSector"
+                             text="Sector"/>
+
+                <TableColumn fx:id="colWeb"
+                             text="Web"/>
+
+                <TableColumn fx:id="colRegistro"
+                             text="Registro"/>
+
+            </columns>
+
+        </TableView>
+
+    </center>
+
+    <right>
+
+        <VBox spacing="10"
+              prefWidth="280">
+
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+
+            <children>
+
+                <Label text="Nombre"/>
+
+                <TextField fx:id="txtNombre"/>
+
+                <Label text="Sector"/>
+
+                <TextField fx:id="txtSector"/>
+
+                <Label text="Web"/>
+
+                <TextField fx:id="txtWeb"/>
+
+                <HBox spacing="10">
+
+                    <children>
+
+                        <Button text="Nueva"
+                                onAction="#nueva"/>
+
+                        <Button fx:id="btnGuardar"
+                                text="Guardar"
+                                onAction="#guardar"/>
+
+                        <Button text="Eliminar"
+                                onAction="#eliminar"/>
+
+                    </children>
+
+                </HBox>
+
+            </children>
+
+        </VBox>
+
+    </right>
+
+</BorderPane>
