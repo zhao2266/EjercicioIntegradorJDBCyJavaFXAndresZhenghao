@@ -78,6 +78,6 @@ Formato: `id;titulo;empresa;estado;fechaPostulacion;enlace;notas`, con fechas `d
 
 | Miembro | Tareas realizadas en la v2.0 |
 |---|---|
-| Zhenghao  |
-| Andres |
+| Zhenghao | <tareas> |
+| Andres | <tareas> |
  
